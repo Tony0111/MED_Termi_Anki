@@ -1,0 +1,178 @@
+/* --- 通用基础样式 --- */
+.card {
+    font-family: 'Noto Sans SC', 'Inter', 'Roboto', 'Open Sans', 'Microsoft YaHei', Arial, sans-serif;
+    line-height: 1.7; /* 适当增加行高，提高阅读舒适度 */
+    text-align: center; /* 默认卡片内容居中，对齐更整洁 */
+    padding: 20px; /* 增加整体内边距，呼吸感更强 */
+    font-size: 20px; /* 基础字号 */
+    /* 卡片外观 */
+    border: 1px solid #e0e0e0; /* 轻微的浅灰色边框 */
+    border-radius: 12px;     /* 柔和的圆角 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 柔和的阴影 */
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* 平滑过渡 */
+    /* 亮色模式背景颜色 - 使用渐变 */
+    background-image: linear-gradient(to bottom right, #b9f1ef, #eca2a4); 
+    background-color: #ffffff; /* 渐变不支持时的 fallback */
+    color: #333; /* 比纯黑更柔和的深灰色 */
+    box-sizing: border-box; /* 确保 padding 不增加总宽度 */
+
+}
+/* 核心词语样式 */
+.front-word {
+    font-size: 30px; /* 核心词语更大 */
+    font-weight: 700; /* 加粗 */
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #3c88a2; /* 亮色主题下核心词语颜色 */
+    background-color: transparent; /* 确保背景透明 */
+    transition: color 0.3s ease;
+    position: relative; /* for ::after pseudo-element */
+    /* Morpheme 没有音频，所以这里不需要手型光标 */
+    cursor: default; /* 保持普通光标 */
+}
+/* 核心词语下划线动画效果 */
+.front-word::after {
+    content: '';
+    display: block;
+    width: 90px; /* 下划线宽度 */
+    height: 3px; /* 下划线高度 */
+    background-color: #3c88a2; /* 亮色主题下划线颜色 */
+    margin: 15px auto 0; /* 居中并在下方留白 */
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+/* 各个内容区分割块的通用样式 */
+.section {
+    margin-top: 10px; /* 增加段落间距 */
+    padding: 10px; /* 增加内边距 */
+    background-color: transparent;
+    color: #333; /* 亮色模式下文本颜色 */
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: left; /* 段落内容左对齐更易读 */
+    /* 分隔线效果 */
+    border-bottom: 1px dashed #e0e0e0; 
+    margin-left: -20px; /* 负边距，让分隔符延伸到卡片边缘 */
+    margin-right: -20px;
+    padding-left: 20px; /* 弥补负边距，保持内容对齐 */
+    padding-right: 20px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+/* 最后一个 section 不要有底部分隔线 */
+.section:last-of-type {
+    border-bottom: none;
+}
+/* section 内部的强调文本（例如标题）*/
+.section strong {
+    font-size: 17px; /* 稍微大一点，作为小标题 */
+    font-weight: 600; /* 适度加粗 */
+    display: inline;  /* 保持在一行，与后面的文本继续 */
+    letter-spacing: 0.5px; /* 字母间距 */
+    color: #3c88a2; /* 亮色主题下的小标题颜色 */
+    background-color: transparent;
+    transition: color 0.3s ease;
+    /* cursor: pointer; 由 JS 动态添加 */
+}
+/* ------------------------------------------------------------- */
+/* !!! 新增：卡片右下角 Logo 样式 !!! */
+/* ------------------------------------------------------------- */
+.card::after {
+    content: '_达__'; /* 你的 Logo 文本 */
+    position: absolute;
+    bottom: 15px; /* 距离卡片底部的距离 */
+    right: 20px; /* 距离卡片右侧的距离 */
+    font-size: 14px; /* Logo 字体大小 */
+    color: rgba(0, 0, 0, 0.4); /* 柔和的深灰色，稍微透明 */
+    opacity: 0.6; /* 整体透明度，使其更像水印 */
+    font-weight: 500; /* 适度字重 */
+    pointer-events: none; /* 确保它不可点击，不干扰卡片操作 */
+    user-select: none; /* 防止用户意外选中文本 */
+    z-index: 10; /* 确保 Logo 显示在其他内容之上 */
+    letter-spacing: 1px; /* 增加一点字母间距，使其看起来更独特 */
+}
+
+
+/* 图片样式 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* 图片也可以有轻微阴影 */
+}
+/* 链接样式 */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+/* --- Anki 桌面版夜间模式样式 --- */
+/* (Anki 桌面版会在 body 或 html 元素上添加 'nightMode' 类) */
+.nightMode .card {
+    color: #eee; /* 浅色文本 */
+    /* **修改：夜间模式背景渐变** */
+    background-image: linear-gradient(to bottom right, #153a3d, #3d1815); /* 深蓝到深橙的渐变 */
+    background-color: #2c2c2c; /* 渐变不支持时的 fallback */
+
+    border-color: #4a4a4a;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nightMode .front-word {
+    color: #4a4a4a; /* 夜间模式核心词语颜色 */
+}
+
+.nightMode .front-word::after {
+    background-color: #dd8804; /* 夜间模式下划线颜色 */
+}
+
+.nightMode .section {
+    color: #eee;
+    border-color: #4a4a4a; /* 夜间模式下分隔线颜色 */
+}
+
+.nightMode .section strong {
+    color: #dd8804; /* 夜间模式小标题颜色 */
+}
+
+.nightMode a {
+    color: #8ab4f8; /* 夜间模式链接颜色 */
+}
+
+
+/* --- AnkiDroid / AnkiMobile 暗色主题样式 --- */
+/* 使用与桌面版夜间模式一致的渐变 */
+.card.night_mode, .card.night_mode.black {
+    color: #eee;
+    background-image: linear-gradient(to bottom right, #153a3d, #3d1815); /* 深蓝到深橙的渐变 */
+    background-color: #2c2c2c; /* 渐变不支持时的 fallback */
+
+    border-color: #4a4a4a;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.card.night_mode .front-word, .card.night_mode.black .front-word {
+    color: #dd8804;
+}
+.card.night_mode .front-word::after, .card.night_mode.black .front-word::after {
+    background-color: #dd8804;
+}
+.card.night_mode .section, .card.night_mode.black .section {
+    color: #eee;
+    border-color: #4a4a4a;
+}
+.card.night_mode .section strong, .card.night_mode.black .section strong {
+    color: #dd8804;
+}
+/* 确保夜间模式下的链接颜色与桌面版一致 */
+.card.night_mode a, .card.night_mode.black a {
+    color: #8ab4f8;
+}

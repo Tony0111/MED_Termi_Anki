@@ -1,0 +1,33 @@
+<div class="front-word" data-anki-audio-field="MorphemeAudio">
+    {{Morpheme}}
+</div>
+
+
+
+
+<div class="front-word">{{Morpheme}}</div>
+<hr>
+<div class="section">
+    <!-- 将 data-audio-source 改为 data-audio-field-name -->
+    <strong data-audio-field-name="EnglishExplanationAudio">English Explanation:</strong> {{EnglishExplanation}}<br>
+    <strong>Chinese Translation:</strong> {{ChineseTranslation}}<br>
+    {{EnglishExplanationAudio}}
+</div>
+<div class="section">
+    <strong data-audio-field-name="ExampleWordsAudio">Example Words:</strong> {{ExampleWords}}<br>
+    {{ExampleWordsAudio}}
+</div>
+<div class="section">
+    <strong data-audio-field-name="ExampleSentenceAudio">Example Sentence:</strong> {{ExampleSentence}}<br>
+    {{ExampleSentenceAudio}}
+</div>
+
+<!-- !!! 关键改动 !!! -->
+<!-- 这个 div 专门用来存放 Anki 需要“看见”的音频字段，以便它打包音频。 -->
+<!-- 由于它被彻底隐藏，Anki 不会为其渲染任何默认播放按钮。 -->
+<!-- 每个音频字段都被包裹在一个带有唯一ID的span中，便于JavaScript查找。 -->
+<div id="anki-sound-data" style="display:none; visibility:hidden;">
+    <span id="EnglishExplanationAudio_sound">{{EnglishExplanationAudio}}</span>
+    <span id="ExampleWordsAudio_sound">{{ExampleWordsAudio}}</span>
+    <span id="ExampleSentenceAudio_sound">{{ExampleSentenceAudio}}</span>
+</div>
